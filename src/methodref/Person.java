@@ -12,28 +12,28 @@ public class Person {
         this.name = name;
     }
 
-    //스태틱
+    // 정적 메서드
     public static String greeting() {
-        return "Hello!";
+        return "Hello";
     }
 
-    //스태틱 + 매개변수
+    // 정적 메서드, 매개변수
     public static String greetingWithName(String name) {
-        return "Hello, " + name + "!";
-    }
-
-    //인스턴스
-    public String introduce() {
-        return "Nice to meet you" + ", I am " + name;
-    }
-
-    //인스턴스 + 매개변수
-    public String introduceWithName(String name) {
-        return "Nice to meet you, " + name;
+        return "Hello " + name;
     }
 
     public String getName() {
         return name;
+    }
+
+    // 인스턴스 메서드
+    public String introduce() {
+        return "I am " + name;
+    }
+
+    // 인스턴스 메서드, 매개변수
+    public String introduceWithNumber(int number) {
+        return "I am " + name + ", my number is " + number;
     }
 
 }

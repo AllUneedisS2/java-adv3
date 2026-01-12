@@ -1,30 +1,31 @@
 package methodref;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class MethodRefEx2 {
 
     public static void main(String[] args) {
-        
-        //스태틱
-        Function<String, String> staticMethod1 = name -> Person.greetingWithName(name); //람다식
-        System.out.println(staticMethod1.apply("Kim"));
-        Function<String, String> staticMethod2 = Person::greetingWithName; //클래스::스태틱메서드
-        System.out.println(staticMethod2.apply("Kim"));
+        // 1. 정적 메서드 참조
+        Function<String, String> staticMethod1 = name -> Person.greetingWithName(name);
+        Function<String, String> staticMethod2 = Person::greetingWithName;
 
-        //인스턴스
+        System.out.println("staticMethod1: " + staticMethod1.apply("Kim"));
+        System.out.println("staticMethod2: " + staticMethod2.apply("Kim"));
+
+        // 2. 특정 객체의 인스턴스 참조
         Person person = new Person("Kim");
-        Function<String, String> instanceMethod1 = name -> person.introduceWithName(name);
-        System.out.println(instanceMethod1.apply("Lee"));
-        Function<String, String> instanceMethod2 = person::introduceWithName;
-        System.out.println(instanceMethod2.apply("Lee"));
-        
-        //생성자
-        Function<String, Person> constructor1 = name -> new Person(name); //람다식
-        System.out.println(constructor1.apply("Park"));
-        Function<String, Person> constructor2 = Person::new; //클래스::new
-        System.out.println(constructor2.apply("Park"));
+        Function<Integer, String> instanceMethod1 = n -> person.introduceWithNumber(n);
+        Function<Integer, String> instanceMethod2 = person::introduceWithNumber;
 
+        System.out.println("instanceMethod1: " + instanceMethod1.apply(1));
+        System.out.println("instanceMethod2: " + instanceMethod2.apply(1));
+
+        // 3. 생성자 참조
+        Function<String, Person> newPerson1 = name -> new Person(name);
+        Function<String, Person> newPerson2 = Person::new;
+
+        System.out.println("newPerson1: " + newPerson1.apply("Kim"));
+        System.out.println("newPerson2: " + newPerson2.apply("Kim"));
     }
-
 }
