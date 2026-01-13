@@ -27,6 +27,7 @@ public class LazyEvalMain3 {
                 })
                 .getFirst();
         System.out.println("result = " + result);
+        
         System.out.println("== MyStreamV3 종료 ==");
     }
 
